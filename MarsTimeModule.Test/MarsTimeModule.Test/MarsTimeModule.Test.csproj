@@ -56,10 +56,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Features\IntervalRelations.feature.cs">
+    <Compile Include="Features\Interval.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IntervalRelations.feature</DependentUpon>
+      <DependentUpon>Interval.feature</DependentUpon>
     </Compile>
     <Compile Include="UnitTests\MomentCompareableTypeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,9 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Features\IntervalRelations.feature">
+    <None Include="Features\Interval.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>IntervalRelations.feature.cs</LastGenOutput>
+      <LastGenOutput>Interval.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

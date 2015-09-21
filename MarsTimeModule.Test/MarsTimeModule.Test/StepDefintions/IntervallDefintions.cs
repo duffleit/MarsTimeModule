@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using MarsTimeModule.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -14,14 +15,15 @@ namespace MarsTimeModule.Test.StepDefintions
     {
         private readonly Stack<Interval> _intervals;
         private IntervalRelation? _lastIntervalStatus = null;
+        private bool _exceptionThrown;
 
         public IntervallDefintions()
         {
             _intervals = new Stack<Interval>();
         }
 
-        [Given(@"is a mars time interval with a starttime of (.*) and a endtime of (.*)")]
-        public void GivenIsAMarsTimeIntervalWithAStartingtimeOfAndAEndingtimeOf(string startMomentStr, string endMomentStr)
+        [Given(@"is a interval with a starttime of (.*) and a endtime of (.*)")]
+        public void GivenIsAIntervalWithAStartingtimeOfAndAEndingtimeOf(string startMomentStr, string endMomentStr)
         {
             var startMoment = Moment.Parse(startMomentStr);
             var endMoment = Moment.Parse(endMomentStr);
@@ -29,6 +31,24 @@ namespace MarsTimeModule.Test.StepDefintions
             var interval = new Interval(startMoment, endMoment);
 
             _intervals.Push(interval);
+        }
+
+        [When(@"a interval with a starttime of (.*) and a endtime of (.*) should be created")]
+        public void WhenAIntervalWithAStarttimeOfAndAEndtimeOfShouldBeCreated(string startMomentStr, string endMomentStr)
+        {
+            _exceptionThrown = false;
+
+            try
+            {
+                var startMoment = Moment.Parse(startMomentStr);
+                var endMoment = Moment.Parse(endMomentStr);
+                new Interval(startMoment, endMoment);
+            }
+            catch
+            {
+                _exceptionThrown = true;
+            }
+            
         }
 
         [Then(@"the relation of the last two added intervals is (.*)")]
@@ -47,5 +67,12 @@ namespace MarsTimeModule.Test.StepDefintions
 
             Assert.AreEqual(expectedRelation, relation);
         }
+
+        [Then(@"a exception gets thrown")]
+        public void ThenAExceptionGetsThrown()
+        {
+            Assert.IsTrue(_exceptionThrown);
+        }
+
     }
 }
