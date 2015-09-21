@@ -25,9 +25,11 @@ namespace MarsTimeModule.Common
 
         public IntervalRelation Comapre(Interval intervalToCompare)
         {
+            Func<Interval, Interval, bool> isNested = (start, end) => (start._startMoment <= end._startMoment && start._endMoment >= end._endMoment);
+
             if (intervalToCompare._endMoment < _startMoment || _endMoment < intervalToCompare._startMoment) return IntervalRelation.Disjoint;
             if (intervalToCompare._endMoment <= _startMoment || _endMoment <= intervalToCompare._startMoment) return IntervalRelation.Touch;
-            if (_startMoment <= intervalToCompare._startMoment && _endMoment >= intervalToCompare._endMoment) return IntervalRelation.Nested;
+            if (isNested(this, intervalToCompare) || isNested(intervalToCompare, this)) return IntervalRelation.Nested;
             
             return IntervalRelation.Overlap;
         }
