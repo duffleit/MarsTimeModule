@@ -54,20 +54,28 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Features\IntervalOverlapStatus.feature.cs">
+    <Compile Include="Features\StatusOfTwoIntervals.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IntervalOverlapStatus.feature</DependentUpon>
+      <DependentUpon>StatusOfTwoIntervals.feature</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StepDefintions\IntervallDefintions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Features\IntervalOverlapStatus.feature">
+    <None Include="Features\StatusOfTwoIntervals.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>IntervalOverlapStatus.feature.cs</LastGenOutput>
+      <LastGenOutput>StatusOfTwoIntervals.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MarsTimeModule.Common\MarsTimeModule.Common.csproj">
+      <Project>{4D871A40-3091-4B81-BE9E-80DF6D392CBC}</Project>
+      <Name>MarsTimeModule.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
