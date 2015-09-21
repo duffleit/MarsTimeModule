@@ -2,6 +2,9 @@
 {
     public enum IntervalRelation
     {
-        Nested
+        Nested,
+        Disjoint,
+        Touch,
+        Overlap
     }
 }

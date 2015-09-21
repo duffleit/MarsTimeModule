@@ -1,21 +1,60 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MarsTimeModule.Common
 {
     public class Moment
     {
-        private readonly int _start;
-        private readonly int _end;
+        #region Fields 
 
-        private Moment(int start, int end)
+        private readonly int _hours;
+        private readonly int _minutes;
+
+        #endregion
+
+        #region Constructor
+
+        public Moment(int hours, int minutes)
         {
-            _start = start;
-            _end = end;
+            if(hours < 0 || hours > 24) throw new ArgumentException("hours is invalid");
+            if (minutes < 0 || minutes > 100) throw new ArgumentException("minutes are invalid");
+
+            _hours = hours;
+            _minutes = minutes;
         }
+
+        #endregion
+
+        #region OpertionOverloads
+
+        public static bool operator >(Moment left, Moment right)
+        {
+            if (left._hours > right._hours) return true;
+            if (left._hours < right._hours) return false;
+            return left._minutes > right._minutes;
+        }
+
+        public static bool operator <(Moment left, Moment right)
+        {
+            if (left._hours < right._hours) return true;
+            if (left._hours > right._hours) return false;
+            return left._minutes < right._minutes; 
+        }
+
+        public static bool operator >=(Moment left, Moment right)
+        {
+            if (left._hours > right._hours) return true;
+            if (left._hours < right._hours) return false;
+            return left._minutes >= right._minutes;
+        }
+
+        public static bool operator <=(Moment left, Moment right)
+        {
+            if (left._hours < right._hours) return true;
+            if (left._hours > right._hours) return false;
+            return left._minutes <= right._minutes; 
+        }
+
+        #endregion
 
         public static Moment Parse(string moment)
         {
@@ -36,9 +75,13 @@ namespace MarsTimeModule.Common
             return new Moment(start, end);
         }
 
+        #region ToString
+
         public override string ToString()
         {
-            return string.Format("{0}:{1}", _start, _end);
+            return string.Format("{0}:{1}", _hours, _minutes);
         }
+
+        #endregion
     }
 }
