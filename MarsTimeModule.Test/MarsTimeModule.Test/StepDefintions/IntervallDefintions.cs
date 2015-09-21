@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MarsTimeModule.Common;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
 
 namespace MarsTimeModule.Test.StepDefintions
@@ -11,34 +12,40 @@ namespace MarsTimeModule.Test.StepDefintions
     [Binding]
     public sealed class IntervallDefintions
     {
-        public Stack<Interval> _intervalls;
+        private readonly Stack<Interval> _intervals;
+        private IntervalRelation? _lastIntervalStatus = null;
 
         public IntervallDefintions()
         {
-            _intervalls = new Stack<Interval>();
+            _intervals = new Stack<Interval>();
         }
 
-        [Given(@"is a mars time interval with a startingtime of (.*) and a endingtime of (.*)")]
-        public void GivenIsAMarsTimeIntervalWithAStartingtimeOfAndAEndingtimeOf(string intervalFrom, string intervalTo)
+        [Given(@"is a mars time interval with a starttime of (.*) and a endtime of (.*)")]
+        public void GivenIsAMarsTimeIntervalWithAStartingtimeOfAndAEndingtimeOf(string startMomentStr, string endMomentStr)
         {
-            var startMoment = Moment.Parse(intervalFrom);
-            var endMoment = Moment.Parse(intervalTo);
+            var startMoment = Moment.Parse(startMomentStr);
+            var endMoment = Moment.Parse(endMomentStr);
 
             var interval = new Interval(startMoment, endMoment);
 
-            _intervalls.Push(interval);
+            _intervals.Push(interval);
         }
 
-        [When(@"the last two intervals are compared")]
-        public void WhenTheLastTwoIntervalsAreCompared()
+        [Then(@"the relation of the last two added intervals is (.*)")]
+        public void ThenTheRelationOfTheLastTwoAddedIntervalsIs(string relationStr)
         {
-            ScenarioContext.Current.Pending();
-        }
+            if(_intervals.Count < 2)
+                throw new BindingException("This step can only be run if more then two intervals are given.");
 
-        [Then(@"the result is (.*)")]
-        public void ThenTheResultIs(string p0)
-        {
-            ScenarioContext.Current.Pending();
+            IntervalRelation expectedRelation;
+            if(!Enum.TryParse(relationStr, true, out expectedRelation))
+                throw new BindingException("Relation can not be parsed.");
+
+            var lastInterval = _intervals.Pop();
+            var foreLastInterval = _intervals.Pop();
+            var relation = foreLastInterval.GetRelation(lastInterval);
+
+            Assert.AreEqual(expectedRelation, relation);
         }
     }
 }

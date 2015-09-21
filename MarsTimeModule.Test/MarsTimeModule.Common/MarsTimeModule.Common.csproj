@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interval.cs" />
+    <Compile Include="IntervalRelation.cs" />
     <Compile Include="Moment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

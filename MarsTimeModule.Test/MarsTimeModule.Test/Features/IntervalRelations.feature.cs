@@ -19,19 +19,19 @@ namespace MarsTimeModule.Test.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class StatusOfTwoIntervalsFeature
+    public partial class IntervalRelationsFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "StatusOfTwoIntervals.feature"
+#line 1 "IntervalRelations.feature"
 #line hidden
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Status of two intervals", "", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Interval Relations", "", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -46,9 +46,9 @@ namespace MarsTimeModule.Test.Features
         public virtual void TestInitialize()
         {
             if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
-                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Status of two intervals")))
+                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Interval Relations")))
             {
-                MarsTimeModule.Test.Features.StatusOfTwoIntervalsFeature.FeatureSetup(null);
+                MarsTimeModule.Test.Features.IntervalRelationsFeature.FeatureSetup(null);
             }
         }
         
@@ -68,35 +68,47 @@ namespace MarsTimeModule.Test.Features
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void ComparingTwoIntervals(string firstIntStartTime, string firstIntEndTime, string secondIntStartTime, string secondIntEndTime, string status, string[] exampleTags)
+        public virtual void ComparingTwoIntervals(string firstIntStartTime, string firstIntEndTime, string secondIntStartTime, string secondIntEndTime, string relation, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Comparing two intervals", exampleTags);
 #line 3
 this.ScenarioSetup(scenarioInfo);
 #line 4
- testRunner.Given(string.Format("is a mars time interval with a startingtime of {0} and a endingtime of {1}", firstIntStartTime, firstIntEndTime), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("is a mars time interval with a starttime of {0} and a endtime of {1}", firstIntStartTime, firstIntEndTime), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
- testRunner.Given(string.Format("is a mars time interval with a startingtime of {0} and a endingtime of {1}", secondIntStartTime, secondIntEndTime), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("is a mars time interval with a starttime of {0} and a endtime of {1}", secondIntStartTime, secondIntEndTime), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
- testRunner.When("the last two intervals are compared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 7
- testRunner.Then("the result is <status>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the relation of the last two added intervals is {0}", relation), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Comparing two intervals")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Status of two intervals")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Interval Relations")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "10:00")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:FirstIntStartTime", "10:00")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:FirstIntEndTime", "12:00")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:SecondIntStartTime", "11:00")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:SecondIntEndTime", "11:30")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Status", "NESTED")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Relation", "NESTED")]
         public virtual void ComparingTwoIntervals_1000()
         {
             this.ComparingTwoIntervals("10:00", "12:00", "11:00", "11:30", "NESTED", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Comparing two intervals")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Interval Relations")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "09:00")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:FirstIntStartTime", "09:00")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:FirstIntEndTime", "20:99")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:SecondIntStartTime", "20:45")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:SecondIntEndTime", "21:15")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Relation", "OVERLAP")]
+        public virtual void ComparingTwoIntervals_0900()
+        {
+            this.ComparingTwoIntervals("09:00", "20:99", "20:45", "21:15", "OVERLAP", ((string[])(null)));
         }
     }
 }
