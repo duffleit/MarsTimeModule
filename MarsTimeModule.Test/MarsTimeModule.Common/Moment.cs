@@ -16,7 +16,7 @@ namespace MarsTimeModule.Common
         public Moment(int hours, int minutes)
         {
             if(hours < 0 || hours > 24) throw new ArgumentException("hours is invalid");
-            if (minutes < 0 || minutes > 100) throw new ArgumentException("minutes are invalid");
+            if (minutes < 0 || minutes >= 100) throw new ArgumentException("minutes are invalid");
 
             _hours = hours;
             _minutes = minutes;
