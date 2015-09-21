@@ -23,7 +23,7 @@ namespace MarsTimeModule.Common
 
         #endregion
 
-        public IntervalRelation Comapre(Interval intervalToCompare)
+        public IntervalRelation Compare(Interval intervalToCompare)
         {
             Func<Interval, Interval, bool> isNested = (start, end) => (start._startMoment <= end._startMoment && start._endMoment >= end._endMoment);
 

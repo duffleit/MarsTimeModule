@@ -63,7 +63,7 @@ namespace MarsTimeModule.Test.StepDefintions
 
             var lastInterval = _intervals.Pop();
             var foreLastInterval = _intervals.Pop();
-            var relation = foreLastInterval.Comapre(lastInterval);
+            var relation = foreLastInterval.Compare(lastInterval);
 
             Assert.AreEqual(expectedRelation, relation);
         }
