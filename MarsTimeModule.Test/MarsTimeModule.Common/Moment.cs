@@ -68,7 +68,7 @@ namespace MarsTimeModule.Common
 
             int start;
             int end;
-            if (!int.TryParse(momentParts[0], out start) || !int.TryParse(momentParts[1], out end))
+            if (!int.TryParse(momentParts[0].Trim(), out start) || !int.TryParse(momentParts[1].Trim(), out end))
                 throw new ArgumentException("Input is not numeric.");
 
 
