@@ -1,7 +1,7 @@
 ﻿using MarsTimeModule.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace MarsTimeModule.Test
+namespace MarsTimeModule.Test.UnitTests
 {
     [TestClass]
     public class MomentCompareableTypeTest
