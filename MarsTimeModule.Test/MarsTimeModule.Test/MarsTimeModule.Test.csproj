@@ -61,7 +61,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Interval.feature</DependentUpon>
     </Compile>
-    <Compile Include="UnitTests\MomentCompareableTypeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StepDefintions\IntervallDefintions.cs" />
   </ItemGroup>
