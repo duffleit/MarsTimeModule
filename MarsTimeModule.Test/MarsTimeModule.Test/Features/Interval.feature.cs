@@ -71,11 +71,11 @@ namespace MarsTimeModule.Test.Features
         public virtual void InvalidInterval(string id, string rq, string startTime, string endTime, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Invalid Interval", exampleTags);
-#line 6
+#line 5
 this.ScenarioSetup(scenarioInfo);
-#line 7
+#line 6
  testRunner.When(string.Format("a interval with a starttime of {0} and a endtime of {1} should be created", startTime, endTime), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 8
+#line 7
  testRunner.Then("a exception gets thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -136,13 +136,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void IntervalRelation(string id, string rq, string firstIntStart, string firstIntEnd, string secondIntStart, string secondIntEnd, string relation, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Interval Relation", exampleTags);
-#line 19
+#line 18
 this.ScenarioSetup(scenarioInfo);
-#line 20
+#line 19
  testRunner.Given(string.Format("is a interval with a starttime of {0} and a endtime of {1}", firstIntStart, firstIntEnd), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 21
+#line 20
  testRunner.Given(string.Format("is a interval with a starttime of {0} and a endtime of {1}", secondIntStart, secondIntEnd), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 22
+#line 21
  testRunner.Then(string.Format("the relation of the last two added intervals is {0}", relation), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
