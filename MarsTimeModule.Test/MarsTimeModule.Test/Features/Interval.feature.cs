@@ -212,11 +212,11 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:FirstIntStart", "09:00")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:FirstIntEnd", "20:99")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:SecondIntStart", "20:99")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:SecondIntEnd", "21:15")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:SecondIntEnd", "20:99")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Relation", "TOUCH")]
         public virtual void IntervalRelation_4()
         {
-            this.IntervalRelation("4", "09:00", "20:99", "20:99", "21:15", "TOUCH", ((string[])(null)));
+            this.IntervalRelation("4", "09:00", "20:99", "20:99", "20:99", "TOUCH", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
